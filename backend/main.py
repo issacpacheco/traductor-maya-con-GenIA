@@ -138,23 +138,32 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
                 # --- PASO ADICIONAL: ENVIAR ARCHIVOS COMO PRIMER MENSAJE DE CONTEXTO ---
                 
                 initial_text = (
-                    "Por favor, utiliza **TODOS** los diccionarios adjuntos como principal fuente de referencia "
-                    "para todas las peticiones de traducción que se te hagan a partir de ahora."
+                    "Por favor, utiliza TODOS los diccionarios adjuntos como principal fuente "
+                    "de referencia para todas las peticiones de traducción que se te hagan a partir de ahora."
                 )
-                
-                # 1. Crear la lista inicial de partes
+
+                # 1. Crear lista de partes
                 initial_message_parts = []
-                
-                # 2. Agregar TODAS las referencias de archivo
-                initial_message_parts.extend(file_references) 
-                
-                # 3. Agregar la instrucción de texto (Usando el constructor directo)
-                initial_message_parts.append(types.Part(text=initial_text))
-                
-                # Enviamos el mensaje al historial del chat (sin el argumento stream=False o contents=)
-                chat_sessions[client_id].send_message(
-                    initial_message_parts # <-- Pasado como argumento posicional
+
+                # 2. Convertir cada referencia de archivo a Part
+                for ref in file_references:
+                    initial_message_parts.append(
+                        types.Part(
+                            file_data=types.FileData(
+                                file_uri=ref.uri,      # ← importante
+                                mime_type=ref.mime_type
+                            )
+                        )
+                    )
+
+                # 3. Agregar parte de texto
+                initial_message_parts.append(
+                    types.Part(text=initial_text)
                 )
+
+                # 4. Enviar mensaje inicial al chat
+                chat_sessions[client_id].send_message(initial_message_parts)
+
                 print(f"{len(file_references)} Documentos adjuntos al contexto del chat para {client_id}.")
 
             except Exception as e:

@@ -202,7 +202,7 @@ function ChatApp() {
                 {isTyping && (
                     <div className="message-row profesor-couoh-chi">
                         <div className="message-bubble typing-indicator">
-                            ... escribiendo ...
+                            ... escribiendo 
                         </div>
                     </div>
                 )}
