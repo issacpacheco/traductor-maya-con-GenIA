@@ -1,69 +1,34 @@
-/* src/App.css - Estilo Pokémon - Profesor Oak - Tema Gengar */
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* src/App.css - Tema Maya Yucateco */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap');
 
-
-/* --- ANIMACIONES Y KEYFRAMES --- */
-@keyframes background-pan {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes border-pulse {
-    0% { box-shadow: 0 0 5px var(--color-secondary); }
-    50% { box-shadow: 0 0 15px var(--color-secondary), 0 0 5px var(--color-primary); }
-    100% { box-shadow: 0 0 5px var(--color-secondary); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Keyframe para el efecto de movimiento vertical "pixel-scroll" */
-@keyframes pixel-scroll {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-2px); } /* Sube 2 píxeles */
-    100% { transform: translateY(0); }
-}
-
-/* Keyframe para el movimiento lento del patrón de fondo "fantasma" */
-@keyframes ghost-pan {
-    from { background-position: 0 0; }
-    to { background-position: 100% 100%; }
-}
-
-@keyframes bubble-float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-}
-
-
-/* --- 1. CONFIGURACIÓN GLOBAL Y TAMAÑO --- */
+/* --- VARIABLES Y TEMA --- */
 :root {
-    /* Colores Gengar/Fantasma */
-    --color-primary: #d6c8e2; /* Morado intenso (Gengar) - Acento Principal */
-    --color-secondary: #ffffff; /* Rojo/Fucsia brillante (Ojos) - Acento Secundario */
-    --color-bg-dark: #9b9b9b; /* Morado muy oscuro, casi negro */
-    --color-surface-dark: #057faf; /* Morado oscuro para la superficie del chat */
-    --color-text-light: #ffffff; 
-    --color-oak-bubble: #000000; /* Morado claro para burbujas de "Gengar" */
-    --color-success: #78C850; 
-    --color-error: #FF4500; 
-    
+    /* Paleta de Colores Maya */
+    --maya-jade: #00A86B;
+    /* Jade vibrante - Acento principal */
+    --maya-jade-dark: #007A4D;
+    /* Jade oscuro - Hover/Bordes */
+    --maya-terracotta: #E2725B;
+    /* Terracota - Acento secundario/Botones */
+    --maya-limestone: #F5F5DC;
+    /* Piedra caliza - Fondo general */
+    --maya-gold: #D4AF37;
+    /* Dorado - Detalles/Títulos */
+    --maya-stone: #D8D8D8;
+    /* Gris piedra - Superficies */
+    --maya-charcoal: #36454F;
+    /* Carbón - Texto principal */
+    --maya-paper: #FFF8E7;
+    /* Papel antiguo - Burbujas de chat */
+
     /* Fuentes */
-    --font-primary: 'Pixelify Sans', monospace; /* Fuente Pixelada */
-    --font-secondary: 'Roboto', sans-serif;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Lato', sans-serif;
 }
 
-html, body, #root {
+html,
+body,
+#root {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -71,178 +36,138 @@ html, body, #root {
 }
 
 body {
-    /* Centrado global de la aplicación */
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh;
-    
-    color: var(--color-text-light);
-    font-family: var(--font-secondary); 
-    
-    /* FONDO DINÁMICO GENGAR */
-    background: linear-gradient(-45deg, var(--color-bg-dark), #0e645d, #0cb5e9); 
-    background-size: 400% 400%;
-    animation: background-pan 30s ease infinite;
-}
-
-/* --- 2. CONTENEDOR PRINCIPAL --- */
-.chat-container {
-    justify-self: center;
-    height: 90vh; 
-    width: 100%;
-    max-width: 850px; /* Ancho máximo para centrar */
-    margin: 50px; /* Centrado por el body flex */
-    
-    border-radius: 20px; 
-    background-color: rgba(30, 0, 50, 0.9); 
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9); 
-    
-    display: flex;
-    flex-direction: column; 
-    padding: 25px; 
-    gap: 20px; 
-    
-    border: 2px solid var(--color-primary); 
-    box-sizing: border-box; 
-}
-
-/* --- 3. ENCABEZADO Y BOTÓN DE LIMPIEZA --- */
-.header-bar {
-    display: flex;
-    justify-content: space-between; 
+    justify-content: center;
     align-items: center;
-    border-bottom: 4px solid var(--color-primary); 
-    padding-bottom: 12px;
-    margin-bottom: 0; 
-    flex-shrink: 0; 
+    min-height: 100vh;
+
+    color: var(--maya-charcoal);
+    font-family: var(--font-body);
+
+    /* Fondo con textura sutil */
+    background-color: var(--maya-limestone);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d8d8d8' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Clase .title aplicada a h1 */
+/* --- CONTENEDOR PRINCIPAL --- */
+.chat-container {
+    height: 90vh;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px;
+
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+
+    border: 1px solid #d0d0d0;
+}
+
+/* --- ENCABEZADO --- */
+.header-bar {
+    background-color: var(--maya-jade-dark);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(45deg, var(--maya-jade-dark) 25%, transparent 25%, transparent 75%, var(--maya-jade-dark) 75%, var(--maya-jade-dark)),
+        linear-gradient(45deg, var(--maya-jade-dark) 25%, transparent 25%, transparent 75%, var(--maya-jade-dark) 75%, var(--maya-jade-dark));
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    /* Overlay para suavizar el patrón */
+    position: relative;
+    z-index: 1;
+}
+
+.header-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 122, 77, 0.9);
+    /* Jade oscuro con opacidad */
+    z-index: -1;
+}
+
 .title {
-    color: var(--color-secondary); 
-    font-size: 3rem; 
+    color: var(--maya-limestone);
+    font-family: var(--font-heading);
+    font-size: 2rem;
     margin: 0;
-    font-family: var(--font-primary);
-    
-    /* PROPIEDAD CLAVE para el renderizado pixelado */
-    image-rendering: pixelated; 
-    
-    /* EFECTO PIXELADO 3D/CONTRONO sobre la LETRA */
-    text-shadow: 
-        -3px -3px 0 var(--color-primary), 
-        3px -3px 0 var(--color-primary),  
-        -3px 3px 0 var(--color-primary),   
-        3px 3px 0 var(--color-primary),    
-        0 0 20px rgba(36, 31, 33, 0.9); 
-    
-    /* Aplicar solo la animación de movimiento sutil */
-    animation: 
-        pixel-scroll 2s ease-in-out infinite alternate; 
-    
-    display: inline-block; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
-
 
 .clear-button {
-    padding: 12px 25px;
-    background-color: var(--color-secondary); 
-    color: var(--color-bg-dark); 
-    border: none;
-    border-radius: 10px;
+    background-color: transparent;
+    color: var(--maya-limestone);
+    border: 1px solid var(--maya-limestone);
+    padding: 8px 16px;
+    border-radius: 4px;
     cursor: pointer;
-    font-family: var(--font-secondary);
+    font-family: var(--font-body);
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4); 
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
 }
 
 .clear-button:hover:not(:disabled) {
-    background-color: #FF69B4; 
-    transform: scale(1.08) translateY(-2px); 
-    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
+    background-color: var(--maya-limestone);
+    color: var(--maya-jade-dark);
 }
 
 .clear-button:disabled {
-    background-color: #404040;
+    opacity: 0.5;
     cursor: not-allowed;
-    box-shadow: none;
 }
 
-/* --- 4. BARRA DE ESTADO (Conexión) --- */
+/* --- BARRA DE ESTADO --- */
 .status-bar {
     text-align: center;
-    padding: 10px;
-    margin-bottom: 10px; 
-    border-radius: 8px;
-    font-weight: bold;
-    font-family: var(--font-primary); 
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6); 
+    padding: 5px;
+    font-size: 0.85rem;
+    margin: 0;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #666;
 }
 
 .status-bar.connected {
-    background: linear-gradient(90deg, #663399, var(--color-primary)); 
-    color: var(--color-text-light); 
-    animation: border-pulse 2s infinite alternate; 
-    border: 1px solid var(--color-secondary); 
+    color: var(--maya-jade-dark);
 }
 
 .status-bar.disconnected {
-    background-color: var(--color-error);
-    color: white;
-    box-shadow: none;
+    color: var(--maya-terracotta);
 }
 
-/* --- 5. VENTANA DE CHAT --- */
+/* --- VENTANA DE CHAT --- */
 .chat-window {
-    flex-grow: 1; 
-    min-height: 0; 
-    overflow-y: auto; /* Correcto para scrolling vertical */
-    padding: 25px;
-    background-color: var(--color-surface-dark); 
-    
-    border: 2px solid var(--color-primary); 
-    border-radius: 15px; 
-    margin-bottom: 0; 
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9); 
-    
-    scrollbar-color: var(--color-secondary) var(--color-surface-dark); 
-    scrollbar-width: thin;
-    
-    /* --- Posicionamiento para Pseudoelementos --- */
-    position: relative; 
-    
-    /* Añadir el patrón de fondo Gengar/Fantasma (simulación SVG) */
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238A2BE2' fill-opacity='0.1'%3E%3Cpath d='M36 34c0-2.3-1.9-4.2-4.2-4.2s-4.2 1.9-4.2 4.2 1.9 4.2 4.2 4.2 4.2-1.9 4.2-4.2zm6 11c0 2.3 1.9 4.2 4.2 4.2s4.2-1.9 4.2-4.2-1.9-4.2-4.2-4.2-4.2 1.9-4.2 4.2zM28 20c0-2.3-1.9-4.2-4.2-4.2s-4.2 1.9-4.2 4.2 1.9 4.2 4.2 4.2 4.2-1.9 4.2-4.2zm6 11c0 2.3 1.9 4.2 4.2 4.2s4.2-1.9 4.2-4.2-1.9-4.2-4.2-4.2-4.2 1.9-4.2 4.2z'/%3E%3C/g%3E%3C/svg%3E");
-    
-    /* Añadir animación para que el patrón se desplace lentamente */
-    animation: ghost-pan 60s linear infinite;
-    background-size: 150px 150px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    /* Fondo decorativo sutil */
+    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
-/* --- LÍNEA DE PUNTOS GUÍA (Pseudoelemento ::before) --- */
-.chat-window::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    height: 1px; 
-    /* Crea una línea de puntos gruesos con un dash-array */
-    background-image: linear-gradient(to right, var(--color-secondary) 50%, rgba(255, 20, 147, 0) 50%);
-    background-size: 20px 1px; 
-    opacity: 0.3;
-    z-index: 5; 
-}
-
-/* Estilos de burbujas (User y Profesor Oak/Gengar) */
+/* --- MENSAJES --- */
 .message-row {
     display: flex;
-    margin-bottom: 20px; 
-    animation: fadeIn 0.6s forwards; 
+    width: 100%;
 }
 
 .message-row.usuario {
@@ -254,150 +179,131 @@ body {
 }
 
 .message-bubble {
-    padding: 16px 25px; 
-    border-radius: 25px; 
-    max-width: 75%; 
+    max-width: 70%;
+    padding: 15px 20px;
+    border-radius: 8px;
     line-height: 1.6;
-    word-wrap: break-word;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5); 
-    transition: transform 0.3s ease-out; 
-    font-size: 1rem;
-    /* Efecto "fantasma" flotante */
-    transform: translateY(0); 
-    animation: bubble-float 4s ease-in-out infinite alternate;
-    z-index: 10; 
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.message-bubble:hover {
-    transform: translateY(-5px) scale(1.02); 
-}
-
+/* Burbuja Usuario */
 .message-row.usuario .message-bubble {
-    background: linear-gradient(135deg, var(--color-primary), #3091be); /* Gradiente morado usuario */
+    background-color: var(--maya-jade);
     color: white;
-    border-radius: 25px 10px 25px 25px; 
+    border-bottom-right-radius: 0;
 }
 
+/* Burbuja Profesor */
 .message-row.profesor-couoh-chi .message-bubble {
-    background-color: var(--color-oak-bubble); /* Morado claro para "Gengar" */
-    color: var(--color-bg-dark); /* Texto oscuro */
-    border-left: 8px solid var(--color-secondary); /* Borde fucsia más grueso */
-    border-radius: 10px 25px 25px 25px; 
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 20, 147, 0.5); 
+    background-color: white;
+    color: var(--maya-charcoal);
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 0;
+    border-left: 4px solid var(--maya-terracotta);
+    /* Detalle de color */
 }
-
-/* Ajuste para el texto en las burbujas */
-.message-row.profesor-couoh-chi .message-bubble p {
-    color: var(--color-bg-dark);
-    margin: 0;
-}
-
-.typing-indicator {
-    font-style: italic;
-    color: var(--color-secondary); 
-    background-color: var(--color-oak-bubble);
-    border-left: 8px solid var(--color-secondary);
-    z-index: 10;
-}
-
-.typing-indicator::after {
-    content: " • • •";
-    display: inline-block;
-    animation: bounce 1.5s infinite;
-}
-
-/* --- 6. ESTILOS MARKDOWN DE PROFESOR OAK/GENGAR --- */
 
 .message-bubble strong {
-    font-weight: 900 !important;
-    color: var(--color-secondary); 
+    font-weight: 700;
+    color: inherit;
 }
 
-.message-bubble h1, 
-.message-bubble h2, 
+/* Estilos Markdown dentro de burbujas */
+.message-bubble h1,
+.message-bubble h2,
 .message-bubble h3 {
-    color: var(--color-secondary);
-    font-family: var(--font-primary);
-    margin-top: 15px;
-    margin-bottom: 10px;
-    border-bottom: 2px dashed rgba(255, 20, 147, 0.5);
-    padding-bottom: 5px;
-}
-
-.message-bubble ul,
-.message-bubble ol {
-    margin-top: 5px;
+    font-family: var(--font-heading);
+    color: var(--maya-jade-dark);
+    margin-top: 10px;
     margin-bottom: 5px;
-    padding-left: 25px;
+    border-bottom: 1px solid #eee;
 }
 
 .message-bubble code {
-    background-color: #3C0066; 
-    color: var(--color-secondary); 
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-size: 0.95em;
-    font-family: var(--font-primary); 
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
 }
 
 .message-bubble pre {
-    background-color: #260040; 
-    padding: 20px; 
-    border-radius: 8px;
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
     overflow-x: auto;
-    color: var(--color-success); 
-    border: 1px solid var(--color-primary); 
 }
 
-/* --- 7. FORMULARIO DE INPUT --- */
+/* Indicador escribiendo */
+.typing-indicator {
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+/* --- FORMULARIO DE INPUT --- */
 .input-form {
+    padding: 20px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
     display: flex;
-    gap: 20px; 
-    flex-shrink: 0; 
-    margin-top: 10px; 
+    gap: 15px;
 }
 
 .input-form input {
     flex-grow: 1;
-    padding: 16px;
-    background-color: #3C0066; 
-    color: var(--color-text-light);
-    border: 2px solid var(--color-secondary); 
-    border-radius: 12px;
-    font-family: var(--font-secondary);
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-family: var(--font-body);
     font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s;
 }
 
 .input-form input:focus {
-    border-color: var(--color-primary); 
-    box-shadow: 0 0 15px rgba(255, 20, 147, 0.8); 
     outline: none;
-    background-color: #4C0080; 
+    border-color: var(--maya-jade);
 }
 
 .input-form button {
-    padding: 16px 30px;
-    background-color: var(--color-secondary); 
-    color: var(--color-bg-dark); 
+    padding: 12px 25px;
+    background-color: var(--maya-terracotta);
+    color: white;
     border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: var(--font-secondary); 
+    border-radius: 6px;
+    font-family: var(--font-body);
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 6px 0 #A00060, 0 8px 15px rgba(255, 20, 147, 0.5); 
-}
-
-.input-form button:disabled {
-    background-color: #505050;
-    cursor: not-allowed;
-    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .input-form button:hover:not(:disabled) {
-    background-color: #FF69B4; 
-    transform: translateY(3px); 
-    box-shadow: 0 3px 0 #A00060, 0 5px 10px rgba(255, 20, 147, 0.6);
+    background-color: #c05842;
+}
+
+.input-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
 }
